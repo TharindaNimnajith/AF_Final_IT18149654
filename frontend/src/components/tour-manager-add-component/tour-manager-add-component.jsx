@@ -7,6 +7,7 @@ import './tour-manager-add-component-styles.scss'
 class AddTourManagerComponent extends Component {
   render() {
     const {
+      onBack,
       onChangeFirstName,
       onChangeLastName,
       onChangePhoneNo,
@@ -97,11 +98,44 @@ class AddTourManagerComponent extends Component {
                             required/>
             </Form.Group>
           </Form.Row>
-          <Button variant='primary'
-                  type='submit'
-                  className={editUser ? 'btn btn-block btn-success mt-3' : 'btn btn-block btn-primary mt-3'}>
-            {editUser ? 'Edit' : 'Add'}
-          </Button>
+          {
+            editUser ? (
+              <Form.Row>
+                <Form.Group>
+                  <Button variant='primary'
+                          type='button'
+                          className={'btn btn-block btn-primary mt-3'}
+                          style={{
+                            marginLeft: '10px',
+                            marginRight: '20px'
+                          }}
+                          onClick={onBack}
+                  >
+                    Back
+                  </Button>
+                </Form.Group>
+                <Form.Group>
+                  <Button variant='primary'
+                          type='submit'
+                          className={'btn btn-block btn-primary mt-3'}
+                          style={{
+                            marginLeft: '20px',
+                            marginRight: '20px'
+                          }}
+                  >
+                    Edit
+                  </Button>
+                </Form.Group>
+              </Form.Row>
+            ) : (
+              <Button variant='primary'
+                      type='submit'
+                      className={'btn btn-block btn-primary mt-3'}
+              >
+                Add
+              </Button>
+            )
+          }
         </Form>
       </div>
     )

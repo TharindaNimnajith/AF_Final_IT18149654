@@ -7,6 +7,7 @@ import './tour-add-component-styles.scss'
 class AddTourComponent extends Component {
   render() {
     const {
+      onBack,
       onChangeTourName,
       onChangeTourDescription,
       onChangeDestination,
@@ -105,11 +106,44 @@ class AddTourComponent extends Component {
                             required/>
             </Form.Group>
           </Form.Row>
-          <Button variant='primary'
-                  type='submit'
-                  className={editTour ? 'btn btn-block btn-success mt-3' : 'btn btn-block btn-primary mt-3'}>
-            {editTour ? 'Edit' : 'Add'}
-          </Button>
+          {
+            editTour ? (
+              <Form.Row>
+                <Form.Group>
+                  <Button variant='primary'
+                          type='button'
+                          className={'btn btn-block btn-primary mt-3'}
+                          style={{
+                            marginLeft: '10px',
+                            marginRight: '20px'
+                          }}
+                          onClick={onBack}
+                  >
+                    Back
+                  </Button>
+                </Form.Group>
+                <Form.Group>
+                  <Button variant='primary'
+                          type='submit'
+                          className={'btn btn-block btn-primary mt-3'}
+                          style={{
+                            marginLeft: '20px',
+                            marginRight: '20px'
+                          }}
+                  >
+                    Edit
+                  </Button>
+                </Form.Group>
+              </Form.Row>
+            ) : (
+              <Button variant='primary'
+                      type='submit'
+                      className={'btn btn-block btn-primary mt-3'}
+              >
+                Add
+              </Button>
+            )
+          }
         </Form>
       </div>
     )

@@ -86,6 +86,20 @@ class ManageTourComponent extends Component {
     })
   }
 
+  onBack = () => {
+    this.setState({
+      tourName: '',
+      tourDescription: '',
+      destination: '',
+      startDate: '',
+      endDate: '',
+      pricePerPerson: '',
+      editingTourId: '',
+      editingTour: null,
+      editTour: false
+    })
+  }
+
   onSubmitAdd = event => {
     event.preventDefault()
     const tour = {
@@ -265,7 +279,8 @@ class ManageTourComponent extends Component {
         </h1>
         <Row>
           <Col sm='3'>
-            <AddTourComponent onChangeTourName={this.onChangeTourName}
+            <AddTourComponent onBack={this.onBack}
+                              onChangeTourName={this.onChangeTourName}
                               onChangeTourDescription={this.onChangeTourDescription}
                               onChangeDestination={this.onChangeDestination}
                               onChangeStartDate={this.onChangeStartDate}

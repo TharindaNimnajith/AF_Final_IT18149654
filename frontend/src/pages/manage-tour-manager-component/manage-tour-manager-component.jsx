@@ -159,6 +159,19 @@ class ManageTourManagerComponent extends Component {
     })
   }
 
+  onBack = () => {
+    this.setState({
+      firstName: '',
+      lastName: '',
+      phoneNo: '',
+      email: '',
+      nic: '',
+      editingUserId: '',
+      editingUser: null,
+      editUser: false
+    })
+  }
+
   onSubmitEdit = userId => {
     axios.get(`${proxy}manager/manager/${userId}`)
       .then(res => {
@@ -253,7 +266,8 @@ class ManageTourManagerComponent extends Component {
         </h1>
         <Row>
           <Col sm='3'>
-            <AddTourManagerComponent onChangeFirstName={this.onChangeFirstName}
+            <AddTourManagerComponent onBack={this.onBack}
+                                     onChangeFirstName={this.onChangeFirstName}
                                      onChangeLastName={this.onChangeLastName}
                                      onChangePhoneNo={this.onChangePhoneNo}
                                      onChangeEmail={this.onChangeEmail}
