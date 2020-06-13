@@ -34,37 +34,53 @@ class NavigationBarComponent extends Component {
               collapseOnSelect
       >
         <Nav>
-          <Link to='/'>
-            <Navbar.Brand href='#home'>Home</Navbar.Brand>
-          </Link>
-          <Nav className='mr-auto'>
+          <div>
+            <Link to='/'>
+              <Navbar.Brand href='#home'>Home</Navbar.Brand>
+            </Link>
+          </div>
+          <div
+            style={{
+              position: 'fixed',
+              right: '150px'
+            }}
+          >
+            <Nav className='mr-auto'>
+              {
+                loggedIn && userType === 'Administrator' ? (
+                    <Link to='/managers'>
+                      <Nav.Link href='#managers'>Manage Tour Managers</Nav.Link>
+                    </Link>
+                  ) :
+                  null
+              }
+              {
+                loggedIn && userType === 'Tour Manager' ? (
+                    <Link to='/tours'>
+                      <Nav.Link href='#tours'>Manage Tours</Nav.Link>
+                    </Link>
+                  ) :
+                  null
+              }
+            </Nav>
+          </div>
+          <div
+            style={{
+              position: 'fixed',
+              right: '30px'
+            }}
+          >
             {
-              loggedIn && userType === 'Administrator' ? (
-                  <Link to='/managers'>
-                    <Nav.Link href='#managers'>Manage Tour Managers</Nav.Link>
+              loggedIn ? (
+                  <Link to='/'>
+                    <Button variant='outline-info'>Logout</Button>
                   </Link>
                 ) :
-                null
-            }
-            {
-              loggedIn && userType === 'Tour Manager' ? (
-                  <Link to='/tours'>
-                    <Nav.Link href='#tours'>Manage Tours</Nav.Link>
-                  </Link>
-                ) :
-                null
-            }
-          </Nav>
-          {
-            loggedIn ? (
-                <Link to='/'>
-                  <Button variant='outline-info'>Logout</Button>
+                <Link to='/login'>
+                  <Button variant='outline-info'>Login</Button>
                 </Link>
-              ) :
-              <Link to='/login'>
-                <Button variant='outline-info'>Login</Button>
-              </Link>
-          }
+            }
+          </div>
         </Nav>
       </Navbar>
     )
