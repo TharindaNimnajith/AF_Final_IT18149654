@@ -2,10 +2,11 @@ import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import {proxy} from '../../conf'
-import AddUserComponent from '../../components/user-add-component/user-add-component'
-import ListUserComponent from '../../components/user-list-component/user-list-component'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import AddUserComponent from '../../components/user-add-component/user-add-component'
+import ListUserComponent from '../../components/user-list-component/user-list-component'
+import './manage-user-component-styles.sass'
 
 class ManageUserComponent extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class ManageUserComponent extends Component {
   }
 
   getUsers = () => {
-    axios.get(`${proxy}user`).then(res => {
+    axios.get(`${proxy}manager`).then(res => {
       this.setState({
         users: res.data
       })
@@ -76,7 +77,7 @@ class ManageUserComponent extends Component {
       email: this.state.email,
       nic: this.state.nic
     }
-    axios.post(`${proxy}user`, user)
+    axios.post(`${proxy}manager`, user)
       .then(() => {
         this.getUsers()
         this.setState({
@@ -92,7 +93,7 @@ class ManageUserComponent extends Component {
   }
 
   deleteUser = userId => {
-    axios.delete(`${proxy}user/${userId}`)
+    axios.delete(`${proxy}manager/${userId}`)
       .then(() => {
         this.getUsers()
       }).catch(error => {
@@ -101,7 +102,7 @@ class ManageUserComponent extends Component {
   }
 
   onSubmitEdit = userId => {
-    axios.get(`${proxy}user/${userId}`)
+    axios.get(`${proxy}manager/${userId}`)
       .then(res => {
         this.setState({
           editingUserId: userId,
@@ -129,7 +130,7 @@ class ManageUserComponent extends Component {
       email: this.state.email,
       nic: this.state.nic
     }
-    axios.put(`${proxy}user/${this.state.editingUserId}`, user)
+    axios.put(`${proxy}manager/${this.state.editingUserId}`, user)
       .then(() => {
         this.getUsers()
         this.setState({

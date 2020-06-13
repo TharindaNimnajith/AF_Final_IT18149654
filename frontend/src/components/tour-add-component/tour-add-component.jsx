@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import './user-add-component-styles.sass'
+import './tour-add-component-styles.sass'
 
-class AddUserComponent extends Component {
+class AddTourComponent extends Component {
   render() {
     const {
       onChangeFirstName,
@@ -75,4 +75,4 @@ class AddUserComponent extends Component {
   }
 }
 
-export default AddUserComponent
+export default AddTourComponent

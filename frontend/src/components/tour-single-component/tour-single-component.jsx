@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
+import './user-single-component-styles.sass'
 
 class SingleUserComponent extends Component {
   render() {

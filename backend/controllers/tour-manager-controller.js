@@ -52,7 +52,7 @@ const addUser = async (req, res, next) => {
     email,
     nic,
     password: generatedPassword,
-    type: 'Customer'
+    type: 'Tour Manager'
   })
 
   try {
@@ -175,7 +175,7 @@ const getUserList = async (req, res, next) => {
 
   try {
     userList = await User.find({
-      type: 'Customer'
+      type: 'Tour Manager'
     })
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
@@ -212,11 +212,11 @@ const sendEmail = async (email, password) => {
   let info = {
     from: adminEmail,
     to: email,
-    subject: 'Added as a User',
+    subject: 'Added as a Tour Manager',
     text:
       `Congratulations!
-      You have been assigned as a Store Manager.
-      Now you can manage product related operations as a store manager in the Online Fashion Store.
+      You have been assigned as a Tour Manager.
+      Now you can manage tours related operations as a tour manager in the Online Tourism Planner.
       Please find your login credentials below.
       LOGIN CREDENTIALS
       Email: ${email}

@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-const UserRoutes = require('./routes/user-routes')
+const UserRoutes = require('./routes/tour-manager-routes')
 
 require('dotenv').config()
 
