@@ -6,6 +6,7 @@ import ManageTourComponent from './pages/manage-tour-component/manage-tour-compo
 import LoginRegisterComponent from './pages/login-register-component/login-register-component'
 import Footer from './components/footer-component/footer-component'
 import HomeComponent from './pages/home-component/home-component'
+import TourPackagesComponent from './pages/tour-packages-component/tour-packages-component'
 import './App.css'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path='/managers' component={ManageTourManagerComponent} exact/>
           <Route path='/tours' component={ManageTourComponent} exact/>
           <Route path='/login' component={LoginRegisterComponent} exact/>
+          <Route path='/packages' component={TourPackagesComponent} exact/>
         </Router>
         <Footer/>
       </div>

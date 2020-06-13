@@ -75,7 +75,7 @@ class AddTourComponent extends Component {
               <Form.Control placeholder='Enter Start Date'
                             type='date'
                             onChange={onChangeStartDate}
-                            value={startDate}
+                            value={startDate.substring(0, 10)}
                             title='Please enter a start date.'
                             required/>
             </Form.Group>
@@ -87,7 +87,7 @@ class AddTourComponent extends Component {
               <Form.Control placeholder='Enter End Date'
                             type='date'
                             onChange={onChangeEndDate}
-                            value={endDate}
+                            value={endDate.substring(0, 10)}
                             title='Please enter an end date.'
                             required/>
             </Form.Group>

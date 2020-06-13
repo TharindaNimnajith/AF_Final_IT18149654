@@ -74,6 +74,26 @@ class NavigationBarComponent extends Component {
                   ) :
                   null
               }
+              {
+                loggedIn && userType === 'Customer' ? (
+                    <Link to='/packages'
+                          style={{
+                            textDecoration: 'none'
+                          }}
+                    >
+                      <Nav.Link href='#book_now'>
+                        <Button variant={'danger'}
+                                style={{
+                                  marginTop: '-8px'
+                                }}
+                        >
+                          Book Now!
+                        </Button>
+                      </Nav.Link>
+                    </Link>
+                  ) :
+                  null
+              }
             </Nav>
           </div>
           <div

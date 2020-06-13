@@ -16,8 +16,8 @@ class SingleTourComponent extends Component {
         <td>{tour.tourName}</td>
         <td>{tour.tourDescription}</td>
         <td>{tour.destination}</td>
-        <td>{tour.startDate}</td>
-        <td>{tour.endDate}</td>
+        <td>{tour.startDate.substring(0, 10)}</td>
+        <td>{tour.endDate.substring(0, 10)}</td>
         <td>{tour.pricePerPerson}</td>
         <td>
           <Button
