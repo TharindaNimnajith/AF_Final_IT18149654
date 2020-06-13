@@ -1,23 +1,23 @@
 import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
-import './user-single-component-styles.sass'
+import './tour-single-component-styles.sass'
 
-class SingleUserComponent extends Component {
+class SingleTourComponent extends Component {
   render() {
     const {
-      user,
+      tour,
       onSubmitEdit,
-      deleteUser
+      deleteTour
     } = this.props
 
     return (
-      <tr key={user._id}>
-        <td>{user.firstName}</td>
-        <td>{user.lastName}</td>
-        <td>{user.phoneNo}</td>
-        <td>{user.email}</td>
-        <td>{user.nic}</td>
+      <tr key={tour._id}>
+        <td>{tour.firstName}</td>
+        <td>{tour.lastName}</td>
+        <td>{tour.phoneNo}</td>
+        <td>{tour.email}</td>
+        <td>{tour.nic}</td>
         <td>
           <Button
             variant={'primary'}
@@ -35,7 +35,7 @@ class SingleUserComponent extends Component {
         <td>
           <Button
             variant={'danger'}
-            onClick={deleteUser}
+            onClick={deleteTour}
           >
             <FaTrashAlt
               size={20}
@@ -51,4 +51,4 @@ class SingleUserComponent extends Component {
   }
 }
 
-export default SingleUserComponent
+export default SingleTourComponent

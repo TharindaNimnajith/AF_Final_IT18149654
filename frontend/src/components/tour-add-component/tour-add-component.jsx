@@ -7,25 +7,27 @@ import './tour-add-component-styles.sass'
 class AddTourComponent extends Component {
   render() {
     const {
-      onChangeFirstName,
-      onChangeLastName,
-      onChangePhoneNo,
-      onChangeEmail,
-      onChangeNIC,
+      onChangeTourName,
+      onChangeTourDescription,
+      onChangeDestination,
+      onChangeStartDate,
+      onChangeEndDate,
+      onChangePricePerPerson,
       onSubmitAdd,
       onSubmitUpdate,
-      editUser,
-      firstName,
-      lastName,
-      phoneNo,
-      email,
-      nic
+      editTour,
+      tourName,
+      tourDescription,
+      destination,
+      startDate,
+      endDate,
+      pricePerPerson
     } = this.props
 
     return (
       <div>
         <Form
-          onSubmit={editUser ? onSubmitUpdate : onSubmitAdd}
+          onSubmit={editTour ? onSubmitUpdate : onSubmitAdd}
           style={{
             border: 'solid 1px',
             padding: '20px',
@@ -33,41 +35,73 @@ class AddTourComponent extends Component {
           }}
         >
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridFirstName'>
-              <Form.Label>First Name</Form.Label>
-              <Form.Control placeholder='Enter First Name' type='text' onChange={onChangeFirstName} value={firstName}
+            <Form.Group as={Col}
+                        controlId='formGridTourName'>
+              <Form.Label>Tour Name</Form.Label>
+              <Form.Control placeholder='Enter Tour Name'
+                            type='text'
+                            onChange={onChangeTourName}
+                            value={tourName}
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridLastName'>
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control placeholder='Enter Last Name' type='text' onChange={onChangeLastName} value={lastName}
+            <Form.Group as={Col}
+                        controlId='formGridTourDescription'>
+              <Form.Label>Tour Description</Form.Label>
+              <Form.Control placeholder='Enter Tour Description'
+                            type='text' onChange={onChangeTourDescription}
+                            value={tourDescription}
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridPhoneNo'>
-              <Form.Label>Phone No</Form.Label>
-              <Form.Control placeholder='Enter Phone Number' type='text' onChange={onChangePhoneNo} value={phoneNo}
+            <Form.Group as={Col}
+                        controlId='formGridDestination'>
+              <Form.Label>Destination</Form.Label>
+              <Form.Control placeholder='Enter Destination'
+                            type='text' onChange={onChangeDestination}
+                            value={destination}
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridEmail'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control placeholder='Enter Email' type='email' onChange={onChangeEmail} value={email} required/>
+            <Form.Group as={Col}
+                        controlId='formGridStartDate'>
+              <Form.Label>Start Date</Form.Label>
+              <Form.Control placeholder='Enter Start Date'
+                            type='date'
+                            onChange={onChangeStartDate}
+                            value={startDate}
+                            required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridNIC'>
-              <Form.Label>NIC</Form.Label>
-              <Form.Control placeholder='Enter NIC' type='text' onChange={onChangeNIC} value={nic} required/>
+            <Form.Group as={Col}
+                        controlId='formGridEndDate'>
+              <Form.Label>End Date</Form.Label>
+              <Form.Control placeholder='Enter End Date'
+                            type='date'
+                            onChange={onChangeEndDate}
+                            value={endDate}
+                            required/>
             </Form.Group>
           </Form.Row>
-          <Button variant='primary' type='submit'
-                  className={editUser ? 'btn btn-block btn-success mt-3' : 'btn btn-block btn-primary mt-3'}>
-            {editUser ? 'Edit' : 'Add'}
+          <Form.Row>
+            <Form.Group as={Col}
+                        controlId='formGridPricePerPerson'>
+              <Form.Label>Price Per Person</Form.Label>
+              <Form.Control placeholder='Enter Price per Person'
+                            type='number'
+                            onChange={onChangePricePerPerson}
+                            value={pricePerPerson}
+                            required/>
+            </Form.Group>
+          </Form.Row>
+          <Button variant='primary'
+                  type='submit'
+                  className={editTour ? 'btn btn-block btn-success mt-3' : 'btn btn-block btn-primary mt-3'}>
+            {editTour ? 'Edit' : 'Add'}
           </Button>
         </Form>
       </div>

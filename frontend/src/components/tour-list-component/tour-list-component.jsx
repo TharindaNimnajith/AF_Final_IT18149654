@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import Table from 'react-bootstrap/Table'
-import SingleUserComponent from '../tour-single-component/tour-single-component'
+import SingleTourComponent from '../tour-single-component/tour-single-component'
 import './tour-list-component-styles.sass'
 
-class ListUserComponent extends Component {
+class ListTourComponent extends Component {
   render() {
     const {
-      users,
+      tours,
       onSubmitEdit,
-      deleteUser
+      deleteTour
     } = this.props
 
     return (
@@ -16,21 +16,22 @@ class ListUserComponent extends Component {
         <Table responsive striped bordered hover variant='dark'>
           <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone No</th>
-            <th>Email</th>
-            <th>NIC</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Destination</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Price Per Person</th>
             <th/>
             <th/>
           </tr>
           </thead>
           <tbody>
           {
-            users.map(user => {
-              return <SingleUserComponent user={user}
-                                          onSubmitEdit={() => onSubmitEdit(user._id)}
-                                          deleteUser={() => deleteUser(user._id)}/>
+            tours.map(tour => {
+              return <SingleTourComponent tour={tour}
+                                          onSubmitEdit={() => onSubmitEdit(tour._id)}
+                                          deleteUser={() => deleteTour(tour._id)}/>
             })
           }
           </tbody>
@@ -40,4 +41,4 @@ class ListUserComponent extends Component {
   }
 }
 
-export default ListUserComponent
+export default ListTourComponent

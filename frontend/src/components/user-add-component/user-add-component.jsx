@@ -33,39 +33,62 @@ class AddUserComponent extends Component {
           }}
         >
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridFirstName'>
+            <Form.Group as={Col}
+                        controlId='formGridFirstName'>
               <Form.Label>First Name</Form.Label>
-              <Form.Control placeholder='Enter First Name' type='text' onChange={onChangeFirstName} value={firstName}
+              <Form.Control placeholder='Enter First Name'
+                            type='text'
+                            onChange={onChangeFirstName}
+                            value={firstName}
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridLastName'>
+            <Form.Group as={Col}
+                        controlId='formGridLastName'>
               <Form.Label>Last Name</Form.Label>
-              <Form.Control placeholder='Enter Last Name' type='text' onChange={onChangeLastName} value={lastName}
+              <Form.Control placeholder='Enter Last Name'
+                            type='text'
+                            onChange={onChangeLastName}
+                            value={lastName}
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridPhoneNo'>
+            <Form.Group as={Col}
+                        controlId='formGridPhoneNo'>
               <Form.Label>Phone No</Form.Label>
-              <Form.Control placeholder='Enter Phone Number' type='text' onChange={onChangePhoneNo} value={phoneNo}
+              <Form.Control placeholder='Enter Phone Number'
+                            type='text'
+                            onChange={onChangePhoneNo}
+                            value={phoneNo}
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridEmail'>
+            <Form.Group as={Col}
+                        controlId='formGridEmail'>
               <Form.Label>Email</Form.Label>
-              <Form.Control placeholder='Enter Email' type='email' onChange={onChangeEmail} value={email} required/>
+              <Form.Control placeholder='Enter Email'
+                            type='email'
+                            onChange={onChangeEmail}
+                            value={email}
+                            required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} controlId='formGridNIC'>
+            <Form.Group as={Col}
+                        controlId='formGridNIC'>
               <Form.Label>NIC</Form.Label>
-              <Form.Control placeholder='Enter NIC' type='text' onChange={onChangeNIC} value={nic} required/>
+              <Form.Control placeholder='Enter NIC'
+                            type='text'
+                            onChange={onChangeNIC}
+                            value={nic}
+                            required/>
             </Form.Group>
           </Form.Row>
-          <Button variant='primary' type='submit'
+          <Button variant='primary'
+                  type='submit'
                   className={editUser ? 'btn btn-block btn-success mt-3' : 'btn btn-block btn-primary mt-3'}>
             {editUser ? 'Edit' : 'Add'}
           </Button>

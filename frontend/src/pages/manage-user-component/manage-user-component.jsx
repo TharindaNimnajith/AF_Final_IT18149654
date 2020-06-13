@@ -159,7 +159,7 @@ class ManageUserComponent extends Component {
           letterSpacing: '4px',
           color: 'darkblue'
         }}>
-          Manage Users
+          Manage Tour Managers
         </h1>
         <Row>
           <Col sm='3'>
