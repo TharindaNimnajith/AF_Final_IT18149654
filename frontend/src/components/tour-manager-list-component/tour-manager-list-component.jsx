@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Table from 'react-bootstrap/Table'
 import SingleUserComponent from '../tour-manager-single-component/tour-manager-single-component'
-import './tour-manager-list-component-styles.sass'
+import './tour-manager-list-component-styles.scss'
 
 class ListTourManagerComponent extends Component {
   render() {

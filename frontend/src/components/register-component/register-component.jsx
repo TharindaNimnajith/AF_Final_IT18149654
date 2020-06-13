@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import './register-component-styles.sass'
+import './register-component-styles.scss'
 
 class RegisterComponent extends Component {
   render() {

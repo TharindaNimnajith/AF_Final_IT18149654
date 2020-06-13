@@ -5,6 +5,7 @@ import ManageTourManagerComponent from './pages/manage-tour-manager-component/ma
 import ManageTourComponent from './pages/manage-tour-component/manage-tour-component'
 import LoginRegisterComponent from './pages/login-register-component/login-register-component'
 import './App.css'
+import Footer from "./components/footer-component/footer-component";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/tours' component={ManageTourComponent} exact/>
         <Route path='/login' component={LoginRegisterComponent} exact/>
       </Router>
+      <Footer/>
     </div>
   )
 }

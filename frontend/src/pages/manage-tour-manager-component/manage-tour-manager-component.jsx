@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import AddTourManagerComponent from '../../components/tour-manager-add-component/tour-manager-add-component'
 import ListTourManagerComponent from '../../components/tour-manager-list-component/tour-manager-list-component'
-import './manage-tour-manager-component-styles.sass'
+import './manage-tour-manager-component-styles.scss'
 
 class ManageTourManagerComponent extends Component {
   constructor(props) {

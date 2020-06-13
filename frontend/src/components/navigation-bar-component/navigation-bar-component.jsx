@@ -1,1 +1,1 @@
-import 'navigation-bar-component-styles.sass'
+import 'frontend/src/components/navigation-bar-component/navigation-bar-component-styles.scss'

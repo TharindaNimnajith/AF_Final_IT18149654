@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import LoginComponent from '../../components/login-component/login-component'
 import RegisterComponent from '../../components/register-component/register-component'
-import './login-register-component-styles.sass'
+import './login-register-component-styles.scss'
 
 class LoginRegisterComponent extends Component {
   constructor(props) {
@@ -152,19 +152,19 @@ class LoginRegisterComponent extends Component {
   render() {
     return (
       <div className='container'>
-        <div style={{marginTop: '60px'}}>
+        <div style={{marginTop: '40px'}}>
           <Row>
             <Col sm='6'>
               <h3 align={'center'}
                   style={{
-                    marginBottom: '30px'
+                    marginBottom: '20px'
                   }}
               >
                 I already have an account!
               </h3>
               <h4 align={'center'}
                   style={{
-                    marginBottom: '30px'
+                    marginBottom: '20px'
                   }}
               >
                 Please login using email and password.
@@ -186,14 +186,14 @@ class LoginRegisterComponent extends Component {
             <Col sm='6'>
               <h3 align={'center'}
                   style={{
-                    marginBottom: '30px'
+                    marginBottom: '20px'
                   }}
               >
                 I don't have an account!
               </h3>
               <h4 align={'center'}
                   style={{
-                    marginBottom: '30px'
+                    marginBottom: '20px'
                   }}
               >
                 Please register providing necessary details.

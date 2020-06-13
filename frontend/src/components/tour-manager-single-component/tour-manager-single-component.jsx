@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
-import './tour-manager-single-component-styles.sass'
+import './tour-manager-single-component-styles.scss'
 
 class SingleTourManagerComponent extends Component {
   render() {
