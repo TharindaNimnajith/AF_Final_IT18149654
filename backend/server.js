@@ -3,7 +3,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-const UserRoutes = require('./routes/tour-manager-routes')
+const TourManagerRoutes = require('./routes/tour-manager-routes')
+const AdminRoutes = require('./routes/admin-routes')
+const TourRoutes = require('./routes/tour-routes')
+const LoginRoutes = require('./routes/login-routes')
 
 require('dotenv').config()
 
@@ -18,7 +21,10 @@ app.use(
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use('/api', UserRoutes)
+app.use('/manager', TourManagerRoutes)
+app.use('/admin', AdminRoutes)
+app.use('/tour', TourRoutes)
+app.use('/login', LoginRoutes)
 
 const uri = process.env.ATLAS_URI
 const port = process.env.PORT || 5000

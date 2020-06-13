@@ -6,17 +6,14 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
     trim: true
   },
   lastName: {
     type: String,
-    required: true,
     trim: true
   },
   phoneNo: {
     type: String,
-    required: true,
     trim: true
   },
   email: {
@@ -27,7 +24,6 @@ const userSchema = new Schema({
   },
   nic: {
     type: String,
-    required: true,
     unique: true,
     trim: true
   },

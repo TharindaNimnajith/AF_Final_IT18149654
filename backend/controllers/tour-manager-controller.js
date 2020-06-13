@@ -4,7 +4,7 @@ const User = require('../models/user-model')
 
 require('dotenv').config()
 
-const addUser = async (req, res, next) => {
+const addTourManager = async (req, res, next) => {
   let existingUserEmail
   let existingUserNIC
 
@@ -45,7 +45,7 @@ const addUser = async (req, res, next) => {
 
   let generatedPassword = generatePassword()
 
-  const newUser = new User({
+  const newTourManager = new User({
     firstName,
     lastName,
     phoneNo,
@@ -56,7 +56,7 @@ const addUser = async (req, res, next) => {
   })
 
   try {
-    await newUser.save()
+    await newTourManager.save()
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
   }
@@ -64,12 +64,12 @@ const addUser = async (req, res, next) => {
   await sendEmail(email, generatedPassword)
 
   res.status(201).send({
-    message: 'New user added successfully!'
+    message: 'New tour manager added successfully!'
   })
 }
 
-const updateUser = async (req, res, next) => {
-  let user
+const updateTourManager = async (req, res, next) => {
+  let tourManager
   let existingUserEmail
   let existingUserNIC
 
@@ -86,7 +86,7 @@ const updateUser = async (req, res, next) => {
   } = req.body
 
   try {
-    user = await User.findById(id)
+    tourManager = await User.findById(id)
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
   }
@@ -102,7 +102,7 @@ const updateUser = async (req, res, next) => {
     return next('Unexpected internal server error occurred, please try again later.')
   }
 
-  if (existingUserEmail && email !== user.email) {
+  if (existingUserEmail && email !== tourManager.email) {
     await res.json({
       exists: true,
       message: 'A user with the same email already exists.'
@@ -110,7 +110,7 @@ const updateUser = async (req, res, next) => {
     return next('A user with the same email already exists.')
   }
 
-  if (existingUserNIC && nic !== user.nic) {
+  if (existingUserNIC && nic !== tourManager.nic) {
     await res.json({
       exists: true,
       message: 'A user with the same NIC already exists.'
@@ -118,70 +118,70 @@ const updateUser = async (req, res, next) => {
     return next('A user with the same NIC already exists.')
   }
 
-  user.firstName = firstName
-  user.lastName = lastName
-  user.teleNo = phoneNo
-  user.email = email
-  user.nic = nic
+  tourManager.firstName = firstName
+  tourManager.lastName = lastName
+  tourManager.teleNo = phoneNo
+  tourManager.email = email
+  tourManager.nic = nic
 
   try {
-    await user.save()
+    await tourManager.save()
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
   }
 
   res.status(200).send({
-    message: 'User updated successfully!'
+    message: 'Tour manager updated successfully!'
   })
 }
 
-const deleteUser = async (req, res, next) => {
-  let user
+const deleteTourManager = async (req, res, next) => {
+  let tourManager
 
   const {
     id
   } = req.params
 
   try {
-    user = await User.findById(id)
-    await user.remove()
+    tourManager = await User.findById(id)
+    await tourManager.remove()
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
   }
 
   res.status(200).send({
-    message: 'User deleted successfully!'
+    message: 'Tour manager deleted successfully!'
   })
 }
 
-const getUser = async (req, res, next) => {
-  let user
+const getTourManager = async (req, res, next) => {
+  let tourManager
 
   const {
     id
   } = req.params
 
   try {
-    user = await User.findById(id)
+    tourManager = await User.findById(id)
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
   }
 
-  res.status(200).send(user)
+  res.status(200).send(tourManager)
 }
 
-const getUserList = async (req, res, next) => {
-  let userList
+const getTourManagerList = async (req, res, next) => {
+  let tourManagerList
 
   try {
-    userList = await User.find({
+    tourManagerList = await User.find({
       type: 'Tour Manager'
     })
   } catch (error) {
     return next('Unexpected internal server error occurred, please try again later.')
   }
 
-  res.status(200).send(userList)
+  res.status(200).send(tourManagerList)
 }
 
 const getAdminEmail = async () => {
@@ -235,8 +235,8 @@ const sendEmail = async (email, password) => {
       <tr>
       <td style="padding: 10px;">
       <h1 style="text-align: center; color: #1a1a72;">Congratulations!</h1>
-      <h2 style="margin-top:25px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">You have been added as a User.</h2>
-      <h2 style="margin-top:20px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">Now you can book railway tickets online using the Railway Ticket Booking App.</h2>
+      <h2 style="margin-top:25px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">You have been added as a Tour Manager.</h2>
+      <h2 style="margin-top:20px; margin-bottom: 0; color: #4db0c4; font-weight: 400; font-size: medium;">Now you can manage tour packages in the Online Tourism Planner.</h2>
       <h2 style="margin-top:20px; margin-bottom: 10px; color: #4db0c4; font-weight: 400; font-size: medium;">Please find your login credentials below.</h2>
       </td>
       </tr>
@@ -302,8 +302,8 @@ function generatePassword() {
   return randomPassword
 }
 
-exports.addUser = addUser
-exports.updateUser = updateUser
-exports.deleteUser = deleteUser
-exports.getUser = getUser
-exports.getUserList = getUserList
+exports.addTourManager = addTourManager
+exports.updateTourManager = updateTourManager
+exports.deleteTourManager = deleteTourManager
+exports.getTourManager = getTourManager
+exports.getTourManagerList = getTourManagerList
