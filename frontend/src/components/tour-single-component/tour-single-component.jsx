@@ -13,11 +13,12 @@ class SingleTourComponent extends Component {
 
     return (
       <tr key={tour._id}>
-        <td>{tour.firstName}</td>
-        <td>{tour.lastName}</td>
-        <td>{tour.phoneNo}</td>
-        <td>{tour.email}</td>
-        <td>{tour.nic}</td>
+        <td>{tour.tourName}</td>
+        <td>{tour.tourDescription}</td>
+        <td>{tour.destination}</td>
+        <td>{tour.startDate}</td>
+        <td>{tour.endDate}</td>
+        <td>{tour.pricePerPerson}</td>
         <td>
           <Button
             variant={'primary'}

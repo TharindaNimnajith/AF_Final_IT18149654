@@ -6,9 +6,9 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import AddUserComponent from '../../components/user-add-component/user-add-component'
 import ListUserComponent from '../../components/user-list-component/user-list-component'
-import './manage-user-component-styles.sass'
+import './manage-tour-manager-component-styles.sass'
 
-class ManageUserComponent extends Component {
+class ManageTourManagerComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -29,11 +29,12 @@ class ManageUserComponent extends Component {
   }
 
   getUsers = () => {
-    axios.get(`${proxy}manager`).then(res => {
-      this.setState({
-        users: res.data
-      })
-    }).catch(error => {
+    axios.get(`${proxy}manager/manager`)
+      .then(res => {
+        this.setState({
+          users: res.data
+        })
+      }).catch(error => {
       console.log(error)
     })
   }
@@ -77,7 +78,7 @@ class ManageUserComponent extends Component {
       email: this.state.email,
       nic: this.state.nic
     }
-    axios.post(`${proxy}manager`, user)
+    axios.post(`${proxy}manager/manager`, user)
       .then(() => {
         this.getUsers()
         this.setState({
@@ -93,7 +94,7 @@ class ManageUserComponent extends Component {
   }
 
   deleteUser = userId => {
-    axios.delete(`${proxy}manager/${userId}`)
+    axios.delete(`${proxy}manager/manager/${userId}`)
       .then(() => {
         this.getUsers()
       }).catch(error => {
@@ -102,7 +103,7 @@ class ManageUserComponent extends Component {
   }
 
   onSubmitEdit = userId => {
-    axios.get(`${proxy}manager/${userId}`)
+    axios.get(`${proxy}manager/manager/${userId}`)
       .then(res => {
         this.setState({
           editingUserId: userId,
@@ -130,7 +131,7 @@ class ManageUserComponent extends Component {
       email: this.state.email,
       nic: this.state.nic
     }
-    axios.put(`${proxy}manager/${this.state.editingUserId}`, user)
+    axios.put(`${proxy}manager/manager/${this.state.editingUserId}`, user)
       .then(() => {
         this.getUsers()
         this.setState({
@@ -188,4 +189,4 @@ class ManageUserComponent extends Component {
   }
 }
 
-export default ManageUserComponent
+export default ManageTourManagerComponent

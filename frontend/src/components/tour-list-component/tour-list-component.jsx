@@ -21,7 +21,7 @@ class ListTourComponent extends Component {
             <th>Destination</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Price Per Person</th>
+            <th>Price</th>
             <th/>
             <th/>
           </tr>
@@ -31,7 +31,7 @@ class ListTourComponent extends Component {
             tours.map(tour => {
               return <SingleTourComponent tour={tour}
                                           onSubmitEdit={() => onSubmitEdit(tour._id)}
-                                          deleteUser={() => deleteTour(tour._id)}/>
+                                          deleteTour={() => deleteTour(tour._id)}/>
             })
           }
           </tbody>

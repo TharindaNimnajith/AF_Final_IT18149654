@@ -30,11 +30,12 @@ class ManageTourComponent extends Component {
   }
 
   getTours = () => {
-    axios.get(`${proxy}tour`).then(res => {
-      this.setState({
-        tours: res.data
-      })
-    }).catch(error => {
+    axios.get(`${proxy}tour/tour`)
+      .then(res => {
+        this.setState({
+          tours: res.data
+        })
+      }).catch(error => {
       console.log(error)
     })
   }
@@ -85,7 +86,7 @@ class ManageTourComponent extends Component {
       endDate: this.state.endDate,
       pricePerPerson: this.state.pricePerPerson
     }
-    axios.post(`${proxy}tour`, tour)
+    axios.post(`${proxy}tour/tour`, tour)
       .then(() => {
         this.getTours()
         this.setState({
@@ -102,7 +103,7 @@ class ManageTourComponent extends Component {
   }
 
   deleteTour = tourId => {
-    axios.delete(`${proxy}tour/${tourId}`)
+    axios.delete(`${proxy}tour/tour/${tourId}`)
       .then(() => {
         this.getTours()
       }).catch(error => {
@@ -111,7 +112,7 @@ class ManageTourComponent extends Component {
   }
 
   onSubmitEdit = tourId => {
-    axios.get(`${proxy}tour/${tourId}`)
+    axios.get(`${proxy}tour/tour/${tourId}`)
       .then(res => {
         this.setState({
           editingTourId: tourId,
@@ -141,7 +142,7 @@ class ManageTourComponent extends Component {
       endDate: this.state.endDate,
       pricePerPerson: this.state.pricePerPerson
     }
-    axios.put(`${proxy}user/${this.state.editingTourId}`, tour)
+    axios.put(`${proxy}tour/tour/${this.state.editingTourId}`, tour)
       .then(() => {
         this.getTours()
         this.setState({
