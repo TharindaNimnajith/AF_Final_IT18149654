@@ -12,31 +12,18 @@ class LoginRegisterComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [],
       firstName: '',
       lastName: '',
       phoneNo: '',
       email: '',
       nic: '',
-      editingUserId: '',
-      editingUser: null,
-      editUser: false
+      password: '',
+      confirmPassword: '',
+      loginEmail: '',
+      loginPassword: '',
+      loggedIn: false,
+      userType: ''
     }
-  }
-
-  componentDidMount() {
-    this.getUsers()
-  }
-
-  getUsers = () => {
-    axios.get(`${proxy}manager/manager`)
-      .then(res => {
-        this.setState({
-          users: res.data
-        })
-      }).catch(error => {
-      console.log(error)
-    })
   }
 
   onChangeFirstName = event => {
@@ -69,84 +56,76 @@ class LoginRegisterComponent extends Component {
     })
   }
 
-  onSubmitAdd = event => {
+  onChangePassword = event => {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+  onChangeConfirmPassword = event => {
+    this.setState({
+      confirmPassword: event.target.value
+    })
+  }
+
+  onChangeLoginEmail = event => {
+    this.setState({
+      loginEmail: event.target.value
+    })
+  }
+
+  onChangeLoginPassword = event => {
+    this.setState({
+      loginPassword: event.target.value
+    })
+  }
+
+  onSubmitLogin = event => {
     event.preventDefault()
     const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      phoneNo: this.state.phoneNo,
-      email: this.state.email,
-      nic: this.state.nic
+      email: this.state.loginEmail,
+      password: this.state.loginPassword
     }
-    axios.post(`${proxy}manager/manager`, user)
-      .then(() => {
-        this.getUsers()
-        this.setState({
-          firstName: '',
-          lastName: '',
-          phoneNo: '',
-          email: '',
-          nic: ''
-        })
-      }).catch(error => {
-      console.log(error)
-    })
-  }
-
-  deleteUser = userId => {
-    axios.delete(`${proxy}manager/manager/${userId}`)
-      .then(() => {
-        this.getUsers()
-      }).catch(error => {
-      console.log(error)
-    })
-  }
-
-  onSubmitEdit = userId => {
-    axios.get(`${proxy}manager/manager/${userId}`)
+    axios.post(`${proxy}login/login`, user)
       .then(res => {
+        console.log(res)
         this.setState({
-          editingUserId: userId,
-          editingUser: res.data
-        })
-        this.setState({
-          editUser: true,
-          firstName: this.state.editingUser.firstName,
-          lastName: this.state.editingUser.lastName,
-          phoneNo: this.state.editingUser.phoneNo,
-          email: this.state.editingUser.email,
-          nic: this.state.editingUser.nic
+          loginEmail: '',
+          loginPassword: ''
         })
       }).catch(error => {
       console.log(error)
     })
   }
 
-  onSubmitUpdate = event => {
+  onSubmitRegister = event => {
     event.preventDefault()
-    const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      phoneNo: this.state.phoneNo,
-      email: this.state.email,
-      nic: this.state.nic
+    if (this.state.password !== this.state.confirmPassword) {
+      alert('passwords do not match')
+    } else {
+      const user = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        phoneNo: this.state.phoneNo,
+        email: this.state.email,
+        nic: this.state.nic,
+        password: this.state.password
+      }
+      axios.post(`${proxy}login/register`, user)
+        .then(() => {
+          this.setState({
+            firstName: '',
+            lastName: '',
+            phoneNo: '',
+            email: '',
+            nic: '',
+            password: '',
+            confirmPassword: ''
+          })
+        }).catch(error => {
+        console.log(error)
+      })
     }
-    axios.put(`${proxy}manager/manager/${this.state.editingUserId}`, user)
-      .then(() => {
-        this.getUsers()
-        this.setState({
-          firstName: '',
-          lastName: '',
-          phoneNo: '',
-          email: '',
-          nic: '',
-          editingUserId: '',
-          editingUser: null,
-          editUser: false
-        })
-      }).catch(error => {
-      console.log(error)
-    })
   }
 
   render() {
@@ -169,19 +148,11 @@ class LoginRegisterComponent extends Component {
               >
                 Please login using email and password.
               </h4>
-              <LoginComponent onChangeFirstName={this.onChangeFirstName}
-                              onChangeLastName={this.onChangeLastName}
-                              onChangePhoneNo={this.onChangePhoneNo}
-                              onChangeEmail={this.onChangeEmail}
-                              onChangeNIC={this.onChangeNIC}
-                              onSubmitAdd={this.onSubmitAdd}
-                              onSubmitUpdate={this.onSubmitUpdate}
-                              editUser={this.state.editUser}
-                              firstName={this.state.firstName}
-                              lastName={this.state.lastName}
-                              phoneNo={this.state.phoneNo}
-                              email={this.state.email}
-                              nic={this.state.nic}/>
+              <LoginComponent onChangeLoginEmail={this.onChangeLoginEmail}
+                              onChangeLoginPassword={this.onChangeLoginPassword}
+                              onSubmitLogin={this.onSubmitLogin}
+                              loginEmail={this.state.loginEmail}
+                              loginPassword={this.state.loginPassword}/>
             </Col>
             <Col sm='6'>
               <h3 align={'center'}
@@ -198,9 +169,21 @@ class LoginRegisterComponent extends Component {
               >
                 Please register providing necessary details.
               </h4>
-              <RegisterComponent users={this.state.users}
-                                 onSubmitEdit={this.onSubmitEdit}
-                                 deleteUser={this.deleteUser}/>
+              <RegisterComponent onChangeFirstName={this.onChangeFirstName}
+                                 onChangeLastName={this.onChangeLastName}
+                                 onChangePhoneNo={this.onChangePhoneNo}
+                                 onChangeEmail={this.onChangeEmail}
+                                 onChangePassword={this.onChangePassword}
+                                 onChangeConfirmPassword={this.onChangeConfirmPassword}
+                                 onChangeNIC={this.onChangeNIC}
+                                 onSubmitRegister={this.onSubmitRegister}
+                                 firstName={this.state.firstName}
+                                 lastName={this.state.lastName}
+                                 phoneNo={this.state.phoneNo}
+                                 email={this.state.email}
+                                 nic={this.state.nic}
+                                 password={this.state.password}
+                                 confirmPassword={this.state.confirmPassword}/>
             </Col>
           </Row>
         </div>

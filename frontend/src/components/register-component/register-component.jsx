@@ -27,6 +27,7 @@ class RegisterComponent extends Component {
     return (
       <div>
         <Form
+          name={'form'}
           onSubmit={onSubmitRegister}
           style={{
             border: 'solid 1px',

@@ -26,7 +26,7 @@ class LoginComponent extends Component {
         >
           <Form.Row>
             <Form.Group as={Col}
-                        controlId='formGridEmail'>
+                        controlId='formGridLoginEmail'>
               <Form.Label>Email</Form.Label>
               <Form.Control placeholder='Enter Email'
                             type='text'
@@ -37,7 +37,7 @@ class LoginComponent extends Component {
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col}
-                        controlId='formGridPassword'>
+                        controlId='formGridLoginPassword'>
               <Form.Label>Password</Form.Label>
               <Form.Control placeholder='Enter Password'
                             type='password'
