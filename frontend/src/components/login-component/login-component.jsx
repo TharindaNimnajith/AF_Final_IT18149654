@@ -32,6 +32,8 @@ class LoginComponent extends Component {
                             type='text'
                             onChange={onChangeLoginEmail}
                             value={loginEmail}
+                            pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                            title='Please enter a valid email.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -43,6 +45,8 @@ class LoginComponent extends Component {
                             type='password'
                             onChange={onChangeLoginPassword}
                             value={loginPassword}
+                            minlength={5}
+                            title='Please enter a valid password.'
                             required/>
             </Form.Group>
           </Form.Row>

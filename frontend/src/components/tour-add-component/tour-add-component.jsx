@@ -42,6 +42,7 @@ class AddTourComponent extends Component {
                             type='text'
                             onChange={onChangeTourName}
                             value={tourName}
+                            title='Please enter a tour name.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -52,6 +53,7 @@ class AddTourComponent extends Component {
               <Form.Control placeholder='Enter Tour Description'
                             type='text' onChange={onChangeTourDescription}
                             value={tourDescription}
+                            title='Please enter a tour description.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -62,6 +64,7 @@ class AddTourComponent extends Component {
               <Form.Control placeholder='Enter Destination'
                             type='text' onChange={onChangeDestination}
                             value={destination}
+                            title='Please enter a destination.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -73,6 +76,7 @@ class AddTourComponent extends Component {
                             type='date'
                             onChange={onChangeStartDate}
                             value={startDate}
+                            title='Please enter a start date.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -84,17 +88,20 @@ class AddTourComponent extends Component {
                             type='date'
                             onChange={onChangeEndDate}
                             value={endDate}
+                            title='Please enter an end date.'
                             required/>
             </Form.Group>
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col}
                         controlId='formGridPricePerPerson'>
-              <Form.Label>Price Per Person</Form.Label>
+              <Form.Label>Price Per Person (LKR)</Form.Label>
               <Form.Control placeholder='Enter Price per Person'
-                            type='number'
+                            type='string'
                             onChange={onChangePricePerPerson}
                             value={pricePerPerson}
+                            pattern='[0-9]{1,16}'
+                            title='Please enter valid price per person.'
                             required/>
             </Form.Group>
           </Form.Row>

@@ -43,6 +43,8 @@ class RegisterComponent extends Component {
                             type='text'
                             onChange={onChangeFirstName}
                             value={firstName}
+                            pattern='[A-Za-z]{2,32}'
+                            title='Please enter a valid first name.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -54,6 +56,8 @@ class RegisterComponent extends Component {
                             type='text'
                             onChange={onChangeLastName}
                             value={lastName}
+                            pattern='[A-Za-z]{2,32}'
+                            title='Please enter a valid last name.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -65,6 +69,8 @@ class RegisterComponent extends Component {
                             type='text'
                             onChange={onChangePhoneNo}
                             value={phoneNo}
+                            pattern='0[0-9]{9}'
+                            title='Please enter a valid phone number.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -76,6 +82,8 @@ class RegisterComponent extends Component {
                             type='text'
                             onChange={onChangeNIC}
                             value={nic}
+                            pattern='[0-9]{9}V'
+                            title='Please enter a valid NIC.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -87,6 +95,8 @@ class RegisterComponent extends Component {
                             type='email'
                             onChange={onChangeEmail}
                             value={email}
+                            pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+                            title='Please enter a valid email.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -98,6 +108,9 @@ class RegisterComponent extends Component {
                             type='password'
                             onChange={onChangePassword}
                             value={password}
+                            pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}'
+                            title='Password must contain at least one number, one uppercase,
+                            lowercase letter and at least 5 or more characters.'
                             required/>
             </Form.Group>
           </Form.Row>
@@ -109,6 +122,9 @@ class RegisterComponent extends Component {
                             type='password'
                             onChange={onChangeConfirmPassword}
                             value={confirmPassword}
+                            pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}'
+                            title='Password must contain at least one number, one uppercase,
+                            lowercase letter and at least 5 or more characters.'
                             required/>
             </Form.Group>
           </Form.Row>

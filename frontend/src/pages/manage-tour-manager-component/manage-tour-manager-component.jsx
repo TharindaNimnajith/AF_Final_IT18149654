@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Swal from 'sweetalert2'
 import axios from 'axios'
 import {proxy} from '../../conf'
 import Col from 'react-bootstrap/Col'
@@ -39,6 +40,12 @@ class ManageTourManagerComponent extends Component {
         })
       }).catch(error => {
       console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
     })
   }
 
@@ -93,6 +100,12 @@ class ManageTourManagerComponent extends Component {
         })
       }).catch(error => {
       console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
     })
   }
 
@@ -102,6 +115,12 @@ class ManageTourManagerComponent extends Component {
         this.getUsers()
       }).catch(error => {
       console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
     })
   }
 
@@ -122,6 +141,12 @@ class ManageTourManagerComponent extends Component {
         })
       }).catch(error => {
       console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
     })
   }
 
@@ -149,6 +174,12 @@ class ManageTourManagerComponent extends Component {
         })
       }).catch(error => {
       console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
     })
   }
 

@@ -75,7 +75,7 @@ const login = async (req, res, next) => {
   } catch (error) {
     res.send({
       message: 'Login failed, please try again later.',
-      login: 0
+      login: -1
     })
 
     return next(error)

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Swal from 'sweetalert2'
 import axios from 'axios'
 import {proxy} from '../../conf'
 import Col from 'react-bootstrap/Col'
@@ -7,8 +8,8 @@ import Row from 'react-bootstrap/Row'
 import LoginComponent from '../../components/login-component/login-component'
 import RegisterComponent from '../../components/register-component/register-component'
 import HomeComponent from '../home-component/home-component'
+import NavigationBarComponent from '../../components/navigation-bar-component/navigation-bar-component'
 import './login-register-component-styles.scss'
-import NavigationBarComponent from "../../components/navigation-bar-component/navigation-bar-component";
 
 class LoginRegisterComponent extends Component {
   constructor(props) {
@@ -99,16 +100,50 @@ class LoginRegisterComponent extends Component {
             loggedIn: true,
             userType: res.data.type
           })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Logged in Successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+          })
+        } else if (res.data.login === 0) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.data.message
+          }).then(() => {
+          })
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'An unexpected error occurred. Please try again later.'
+          }).then(() => {
+          })
         }
       }).catch(error => {
       console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
     })
   }
 
   onSubmitRegister = event => {
     event.preventDefault()
     if (this.state.password !== this.state.confirmPassword) {
-      alert('passwords do not match')
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Passwords must match!',
+        footer: 'Please enter the same password for both Password & Confirm Password fields.'
+      }).then(() => {
+      })
     } else {
       const user = {
         firstName: this.state.firstName,
@@ -119,18 +154,42 @@ class LoginRegisterComponent extends Component {
         password: this.state.password
       }
       axios.post(`${proxy}login/register`, user)
-        .then(() => {
-          this.setState({
-            firstName: '',
-            lastName: '',
-            phoneNo: '',
-            email: '',
-            nic: '',
-            password: '',
-            confirmPassword: ''
-          })
+        .then(res => {
+          if (res.data.exists === true) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'A similar user already exists!',
+              footer: res.data.message
+            }).then(() => {
+            })
+          } else {
+            this.setState({
+              firstName: '',
+              lastName: '',
+              phoneNo: '',
+              email: '',
+              nic: '',
+              password: '',
+              confirmPassword: ''
+            })
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Registration Successful!',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+            })
+          }
         }).catch(error => {
         console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'An unexpected error occurred. Please try again later.'
+        }).then(() => {
+        })
       })
     }
   }
