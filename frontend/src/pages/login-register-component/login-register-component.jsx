@@ -8,6 +8,7 @@ import LoginComponent from '../../components/login-component/login-component'
 import RegisterComponent from '../../components/register-component/register-component'
 import HomeComponent from '../home-component/home-component'
 import './login-register-component-styles.scss'
+import NavigationBarComponent from "../../components/navigation-bar-component/navigation-bar-component";
 
 class LoginRegisterComponent extends Component {
   constructor(props) {
@@ -141,9 +142,11 @@ class LoginRegisterComponent extends Component {
                        userType={this.state.userType}/>
       )
     }
-    
+
     return (
       <div className='container'>
+        <NavigationBarComponent loggedIn={this.state.loggedIn}
+                                userType={this.state.userType}/>
         <div style={{marginTop: '70px'}}>
           <Row>
             <Col sm='6'>

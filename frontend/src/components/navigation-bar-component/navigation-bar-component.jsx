@@ -6,7 +6,23 @@ import './navigation-bar-component-styles.scss'
 import {Link} from 'react-router-dom'
 
 class NavigationBarComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+      userType: ''
+    }
+  }
+
   render() {
+    const {
+      loggedIn,
+      userType
+    } = this.props
+
+    this.state.loggedIn = loggedIn
+    this.state.userType = userType
+
     return (
       <Navbar bg='dark'
               variant='dark'
@@ -22,19 +38,33 @@ class NavigationBarComponent extends Component {
             <Navbar.Brand href='#home'>Home</Navbar.Brand>
           </Link>
           <Nav className='mr-auto'>
-            <Link to='/managers'>
-              <Nav.Link href='#managers'>Manage Tour Managers</Nav.Link>
-            </Link>
-            <Link to='/tours'>
-              <Nav.Link href='#tours'>Manage Tours</Nav.Link>
-            </Link>
+            {
+              loggedIn && userType === 'Administrator' ? (
+                  <Link to='/managers'>
+                    <Nav.Link href='#managers'>Manage Tour Managers</Nav.Link>
+                  </Link>
+                ) :
+                null
+            }
+            {
+              loggedIn && userType === 'Tour Manager' ? (
+                  <Link to='/tours'>
+                    <Nav.Link href='#tours'>Manage Tours</Nav.Link>
+                  </Link>
+                ) :
+                null
+            }
           </Nav>
-          <Link to='/login'>
-            <Button variant='outline-info'>Login</Button>
-          </Link>
-          <Link to='/'>
-            <Button variant='outline-info'>Logout</Button>
-          </Link>
+          {
+            loggedIn ? (
+                <Link to='/'>
+                  <Button variant='outline-info'>Logout</Button>
+                </Link>
+              ) :
+              <Link to='/login'>
+                <Button variant='outline-info'>Login</Button>
+              </Link>
+          }
         </Nav>
       </Navbar>
     )

@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import AddTourComponent from '../../components/tour-add-component/tour-add-component'
 import ListTourComponent from '../../components/tour-list-component/tour-list-component'
+import NavigationBarComponent from '../../components/navigation-bar-component/navigation-bar-component'
 import './manage-tour-component-styles.scss'
 
 class ManageTourComponent extends Component {
@@ -21,7 +22,9 @@ class ManageTourComponent extends Component {
       pricePerPerson: '',
       editingTourId: '',
       editingTour: null,
-      editTour: false
+      editTour: false,
+      loggedIn: true,
+      userType: 'Tour Manager'
     }
   }
 
@@ -164,6 +167,8 @@ class ManageTourComponent extends Component {
   render() {
     return (
       <div className='container'>
+        <NavigationBarComponent loggedIn={this.state.loggedIn}
+                                userType={this.state.userType}/>
         <h1 style={{
           textAlign: 'center',
           marginTop: '80px',
