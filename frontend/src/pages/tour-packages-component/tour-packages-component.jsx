@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import {proxy} from '../../conf'
 import NavigationBarComponent from '../../components/navigation-bar-component/navigation-bar-component'
+import TourPackageCardDeckComponent from '../../components/tour-package-card-deck-component/tour-package-card-deck-component'
 import './tour-packages-component-styles.scss'
 
 class TourPackagesComponent extends Component {
@@ -8,8 +12,30 @@ class TourPackagesComponent extends Component {
     super(props)
     this.state = {
       loggedIn: false,
-      userType: ''
+      userType: '',
+      tours: []
     }
+  }
+
+  componentDidMount() {
+    this.getTours()
+  }
+
+  getTours = () => {
+    axios.get(`${proxy}tour/tour`)
+      .then(res => {
+        this.setState({
+          tours: res.data
+        })
+      }).catch(error => {
+      console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'An unexpected error occurred. Please try again later.'
+      }).then(() => {
+      })
+    })
   }
 
   render() {
@@ -30,7 +56,7 @@ class TourPackagesComponent extends Component {
           marginBottom: '-25px'
         }}
         >
-          ssssss
+          <TourPackageCardDeckComponent tours={this.state.tours}/>
         </div>
       </div>
     )
