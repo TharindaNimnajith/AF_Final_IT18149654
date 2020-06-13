@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import {FaEdit, FaTrashAlt} from 'react-icons/fa'
-import './user-single-component-styles.sass'
+import './tour-manager-single-component-styles.sass'
 
-class SingleUserComponent extends Component {
+class SingleTourManagerComponent extends Component {
   render() {
     const {
       user,
@@ -51,4 +51,4 @@ class SingleUserComponent extends Component {
   }
 }
 
-export default SingleUserComponent
+export default SingleTourManagerComponent

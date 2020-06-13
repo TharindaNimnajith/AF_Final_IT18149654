@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Table from 'react-bootstrap/Table'
-import SingleUserComponent from '../user-single-component/user-single-component'
-import './user-list-component-styles.sass'
+import SingleUserComponent from '../tour-manager-single-component/tour-manager-single-component'
+import './tour-manager-list-component-styles.sass'
 
-class ListUserComponent extends Component {
+class ListTourManagerComponent extends Component {
   render() {
     const {
       users,
@@ -40,4 +40,4 @@ class ListUserComponent extends Component {
   }
 }
 
-export default ListUserComponent
+export default ListTourManagerComponent

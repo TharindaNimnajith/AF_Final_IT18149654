@@ -4,8 +4,8 @@ import axios from 'axios'
 import {proxy} from '../../conf'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import AddUserComponent from '../../components/user-add-component/user-add-component'
-import ListUserComponent from '../../components/user-list-component/user-list-component'
+import AddTourManagerComponent from '../../components/tour-manager-add-component/tour-manager-add-component'
+import ListTourManagerComponent from '../../components/tour-manager-list-component/tour-manager-list-component'
 import './manage-tour-manager-component-styles.sass'
 
 class ManageTourManagerComponent extends Component {
@@ -164,24 +164,24 @@ class ManageTourManagerComponent extends Component {
         </h1>
         <Row>
           <Col sm='3'>
-            <AddUserComponent onChangeFirstName={this.onChangeFirstName}
-                              onChangeLastName={this.onChangeLastName}
-                              onChangePhoneNo={this.onChangePhoneNo}
-                              onChangeEmail={this.onChangeEmail}
-                              onChangeNIC={this.onChangeNIC}
-                              onSubmitAdd={this.onSubmitAdd}
-                              onSubmitUpdate={this.onSubmitUpdate}
-                              editUser={this.state.editUser}
-                              firstName={this.state.firstName}
-                              lastName={this.state.lastName}
-                              phoneNo={this.state.phoneNo}
-                              email={this.state.email}
-                              nic={this.state.nic}/>
+            <AddTourManagerComponent onChangeFirstName={this.onChangeFirstName}
+                                     onChangeLastName={this.onChangeLastName}
+                                     onChangePhoneNo={this.onChangePhoneNo}
+                                     onChangeEmail={this.onChangeEmail}
+                                     onChangeNIC={this.onChangeNIC}
+                                     onSubmitAdd={this.onSubmitAdd}
+                                     onSubmitUpdate={this.onSubmitUpdate}
+                                     editUser={this.state.editUser}
+                                     firstName={this.state.firstName}
+                                     lastName={this.state.lastName}
+                                     phoneNo={this.state.phoneNo}
+                                     email={this.state.email}
+                                     nic={this.state.nic}/>
           </Col>
           <Col sm='9'>
-            <ListUserComponent users={this.state.users}
-                               onSubmitEdit={this.onSubmitEdit}
-                               deleteUser={this.deleteUser}/>
+            <ListTourManagerComponent users={this.state.users}
+                                      onSubmitEdit={this.onSubmitEdit}
+                                      deleteUser={this.deleteUser}/>
           </Col>
         </Row>
       </div>
