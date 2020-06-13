@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import './navigation-bar-component-styles.scss'
-import {Link} from 'react-router-dom'
 
 class NavigationBarComponent extends Component {
   constructor(props) {
@@ -35,7 +35,11 @@ class NavigationBarComponent extends Component {
       >
         <Nav>
           <div>
-            <Link to='/'>
+            <Link to='/'
+                  style={{
+                    textDecoration: 'none'
+                  }}
+            >
               <Navbar.Brand href='#home'>Home</Navbar.Brand>
             </Link>
           </div>
@@ -48,7 +52,11 @@ class NavigationBarComponent extends Component {
             <Nav className='mr-auto'>
               {
                 loggedIn && userType === 'Administrator' ? (
-                    <Link to='/managers'>
+                    <Link to='/managers'
+                          style={{
+                            textDecoration: 'none'
+                          }}
+                    >
                       <Nav.Link href='#managers'>Manage Tour Managers</Nav.Link>
                     </Link>
                   ) :
@@ -56,7 +64,11 @@ class NavigationBarComponent extends Component {
               }
               {
                 loggedIn && userType === 'Tour Manager' ? (
-                    <Link to='/tours'>
+                    <Link to='/tours'
+                          style={{
+                            textDecoration: 'none'
+                          }}
+                    >
                       <Nav.Link href='#tours'>Manage Tours</Nav.Link>
                     </Link>
                   ) :
@@ -72,11 +84,19 @@ class NavigationBarComponent extends Component {
           >
             {
               loggedIn ? (
-                  <Link to='/'>
+                  <Link to='/'
+                        style={{
+                          textDecoration: 'none'
+                        }}
+                  >
                     <Button variant='outline-info'>Logout</Button>
                   </Link>
                 ) :
-                <Link to='/login'>
+                <Link to='/login'
+                      style={{
+                        textDecoration: 'none'
+                      }}
+                >
                   <Button variant='outline-info'>Login</Button>
                 </Link>
             }

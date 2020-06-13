@@ -21,7 +21,7 @@ class ListTourComponent extends Component {
             <th>Destination</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Price</th>
+            <th>Price (LKR)</th>
             <th/>
             <th/>
           </tr>

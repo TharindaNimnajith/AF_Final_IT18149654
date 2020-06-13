@@ -97,16 +97,34 @@ class ManageTourComponent extends Component {
       pricePerPerson: this.state.pricePerPerson
     }
     axios.post(`${proxy}tour/tour`, tour)
-      .then(() => {
-        this.getTours()
-        this.setState({
-          tourName: '',
-          tourDescription: '',
-          destination: '',
-          startDate: '',
-          endDate: '',
-          pricePerPerson: ''
-        })
+      .then(res => {
+        if (res.data.exists === true) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'A similar tour already exists!',
+            footer: res.data.message
+          }).then(() => {
+          })
+        } else {
+          this.getTours()
+          this.setState({
+            tourName: '',
+            tourDescription: '',
+            destination: '',
+            startDate: '',
+            endDate: '',
+            pricePerPerson: ''
+          })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'A new tour added successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+          })
+        }
       }).catch(error => {
       console.log(error)
       Swal.fire({
@@ -119,17 +137,34 @@ class ManageTourComponent extends Component {
   }
 
   deleteTour = tourId => {
-    axios.delete(`${proxy}tour/tour/${tourId}`)
-      .then(() => {
-        this.getTours()
-      }).catch(error => {
-      console.log(error)
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'An unexpected error occurred. Please try again later.'
-      }).then(() => {
-      })
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#3085d6',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        axios.delete(`${proxy}tour/tour/${tourId}`)
+          .then(() => {
+            this.getTours()
+          }).catch(error => {
+          console.log(error)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'An unexpected error occurred. Please try again later.'
+          }).then(() => {
+          })
+        })
+        Swal.fire(
+          'Deleted!',
+          'Tour has been deleted.',
+          'success'
+        )
+      }
     })
   }
 
@@ -171,19 +206,37 @@ class ManageTourComponent extends Component {
       pricePerPerson: this.state.pricePerPerson
     }
     axios.put(`${proxy}tour/tour/${this.state.editingTourId}`, tour)
-      .then(() => {
-        this.getTours()
-        this.setState({
-          tourName: '',
-          tourDescription: '',
-          destination: '',
-          startDate: '',
-          endDate: '',
-          pricePerPerson: '',
-          editingTourId: '',
-          editingTour: null,
-          editTour: false
-        })
+      .then(res => {
+        if (res.data.exists === true) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'A similar tour already exists!',
+            footer: res.data.message
+          }).then(() => {
+          })
+        } else {
+          this.getTours()
+          this.setState({
+            tourName: '',
+            tourDescription: '',
+            destination: '',
+            startDate: '',
+            endDate: '',
+            pricePerPerson: '',
+            editingTourId: '',
+            editingTour: null,
+            editTour: false
+          })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Tour updated successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+          })
+        }
       }).catch(error => {
       console.log(error)
       Swal.fire({

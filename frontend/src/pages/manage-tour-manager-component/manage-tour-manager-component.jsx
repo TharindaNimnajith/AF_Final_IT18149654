@@ -89,15 +89,33 @@ class ManageTourManagerComponent extends Component {
       nic: this.state.nic
     }
     axios.post(`${proxy}manager/manager`, user)
-      .then(() => {
-        this.getUsers()
-        this.setState({
-          firstName: '',
-          lastName: '',
-          phoneNo: '',
-          email: '',
-          nic: ''
-        })
+      .then(res => {
+        if (res.data.exists === true) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'A similar user already exists!',
+            footer: res.data.message
+          }).then(() => {
+          })
+        } else {
+          this.getUsers()
+          this.setState({
+            firstName: '',
+            lastName: '',
+            phoneNo: '',
+            email: '',
+            nic: ''
+          })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'A new tour manager added successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+          })
+        }
       }).catch(error => {
       console.log(error)
       Swal.fire({
@@ -110,17 +128,34 @@ class ManageTourManagerComponent extends Component {
   }
 
   deleteUser = userId => {
-    axios.delete(`${proxy}manager/manager/${userId}`)
-      .then(() => {
-        this.getUsers()
-      }).catch(error => {
-      console.log(error)
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'An unexpected error occurred. Please try again later.'
-      }).then(() => {
-      })
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#3085d6',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        axios.delete(`${proxy}manager/manager/${userId}`)
+          .then(() => {
+            this.getUsers()
+          }).catch(error => {
+          console.log(error)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'An unexpected error occurred. Please try again later.'
+          }).then(() => {
+          })
+        })
+        Swal.fire(
+          'Deleted!',
+          'Tour manager has been deleted.',
+          'success'
+        )
+      }
     })
   }
 
@@ -160,18 +195,36 @@ class ManageTourManagerComponent extends Component {
       nic: this.state.nic
     }
     axios.put(`${proxy}manager/manager/${this.state.editingUserId}`, user)
-      .then(() => {
-        this.getUsers()
-        this.setState({
-          firstName: '',
-          lastName: '',
-          phoneNo: '',
-          email: '',
-          nic: '',
-          editingUserId: '',
-          editingUser: null,
-          editUser: false
-        })
+      .then(res => {
+        if (res.data.exists === true) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'A similar user already exists!',
+            footer: res.data.message
+          }).then(() => {
+          })
+        } else {
+          this.getUsers()
+          this.setState({
+            firstName: '',
+            lastName: '',
+            phoneNo: '',
+            email: '',
+            nic: '',
+            editingUserId: '',
+            editingUser: null,
+            editUser: false
+          })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Tour manager updated successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+          })
+        }
       }).catch(error => {
       console.log(error)
       Swal.fire({
