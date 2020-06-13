@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Carousel from 'react-bootstrap/Carousel'
 import NavigationBarComponent from '../../components/navigation-bar-component/navigation-bar-component'
+import HomeCarouselComponent from '../../components/home-carousel-component/home-carousel-component'
 import './home-component-styles.scss'
 
 class HomeComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       loggedIn: false,
       userType: ''
@@ -27,32 +27,11 @@ class HomeComponent extends Component {
         <NavigationBarComponent loggedIn={loggedIn}
                                 userType={userType}/>
         <div style={{
-          marginTop: '60px'
+          marginTop: '60px',
+          marginBottom: '-25px'
         }}
         >
-          <Carousel>
-            <Carousel.Item>
-              <img
-                className='d-block w-100'
-                src={require('../../images/1.jpg')}
-                alt='First slide'
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className='d-block w-100'
-                src={require('../../images/2.jpg')}
-                alt='Second slide'
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className='d-block w-100'
-                src={require('../../images/3.jpg')}
-                alt='Third slide'
-              />
-            </Carousel.Item>
-          </Carousel>
+          <HomeCarouselComponent/>
         </div>
       </div>
     )

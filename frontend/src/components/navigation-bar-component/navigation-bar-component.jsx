@@ -7,7 +7,7 @@ import './navigation-bar-component-styles.scss'
 
 class NavigationBarComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       loggedIn: false,
       userType: ''
