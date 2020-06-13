@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ManageTourManagerComponent from './pages/manage-tour-manager-component/manage-tour-manager-component'
@@ -6,22 +6,24 @@ import ManageTourComponent from './pages/manage-tour-component/manage-tour-compo
 import LoginRegisterComponent from './pages/login-register-component/login-register-component'
 import Footer from './components/footer-component/footer-component'
 import NavigationBarComponent from './components/navigation-bar-component/navigation-bar-component'
-import HomeComponent from "./pages/home-component/home-component";
+import HomeComponent from './pages/home-component/home-component'
 import './App.css'
 
-function App() {
-  return (
-    <div>
-      <Router>
-        <NavigationBarComponent/>
-        <Route path='/' component={HomeComponent} exact/>
-        <Route path='/managers' component={ManageTourManagerComponent} exact/>
-        <Route path='/tours' component={ManageTourComponent} exact/>
-        <Route path='/login' component={LoginRegisterComponent} exact/>
-      </Router>
-      <Footer/>
-    </div>
-  )
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Router>
+          <NavigationBarComponent/>
+          <Route path='/' component={HomeComponent} exact/>
+          <Route path='/managers' component={ManageTourManagerComponent} exact/>
+          <Route path='/tours' component={ManageTourComponent} exact/>
+          <Route path='/login' component={LoginRegisterComponent} exact/>
+        </Router>
+        <Footer/>
+      </div>
+    )
+  }
 }
 
 export default App

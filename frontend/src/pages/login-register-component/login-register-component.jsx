@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import LoginComponent from '../../components/login-component/login-component'
 import RegisterComponent from '../../components/register-component/register-component'
+import HomeComponent from '../home-component/home-component'
 import './login-register-component-styles.scss'
 
 class LoginRegisterComponent extends Component {
@@ -88,11 +89,16 @@ class LoginRegisterComponent extends Component {
     }
     axios.post(`${proxy}login/login`, user)
       .then(res => {
-        console.log(res)
         this.setState({
           loginEmail: '',
           loginPassword: ''
         })
+        if (res.data.login === 1) {
+          this.setState({
+            loggedIn: true,
+            userType: res.data.type
+          })
+        }
       }).catch(error => {
       console.log(error)
     })
@@ -129,6 +135,13 @@ class LoginRegisterComponent extends Component {
   }
 
   render() {
+    if (this.state.loggedIn) {
+      return (
+        <HomeComponent loggedIn={this.state.loggedIn}
+                       userType={this.state.userType}/>
+      )
+    }
+    
     return (
       <div className='container'>
         <div style={{marginTop: '70px'}}>
