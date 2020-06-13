@@ -154,7 +154,7 @@ class ManageTourManagerComponent extends Component {
       <div className='container'>
         <h1 style={{
           textAlign: 'center',
-          marginTop: '50px',
+          marginTop: '80px',
           marginBottom: '50px',
           textTransform: 'uppercase',
           letterSpacing: '4px',

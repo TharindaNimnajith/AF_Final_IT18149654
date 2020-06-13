@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './loading-screen-component-styles.scss'
 
-class LoadingScreen extends Component {
+class LoadingScreenComponent extends Component {
   render() {
     return (
-      <div className="loading">Loading&#8230;</div>
+      <div className='loading'>Loading&#8230;</div>
     )
   }
 }
 
-export default LoadingScreen
+export default LoadingScreenComponent

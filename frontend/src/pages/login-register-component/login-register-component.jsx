@@ -152,19 +152,19 @@ class LoginRegisterComponent extends Component {
   render() {
     return (
       <div className='container'>
-        <div style={{marginTop: '40px'}}>
+        <div style={{marginTop: '70px'}}>
           <Row>
             <Col sm='6'>
               <h3 align={'center'}
                   style={{
-                    marginBottom: '20px'
+                    marginBottom: '10px'
                   }}
               >
                 I already have an account!
               </h3>
               <h4 align={'center'}
                   style={{
-                    marginBottom: '20px'
+                    marginBottom: '10px'
                   }}
               >
                 Please login using email and password.
@@ -186,14 +186,14 @@ class LoginRegisterComponent extends Component {
             <Col sm='6'>
               <h3 align={'center'}
                   style={{
-                    marginBottom: '20px'
+                    marginBottom: '10px'
                   }}
               >
                 I don't have an account!
               </h3>
               <h4 align={'center'}
                   style={{
-                    marginBottom: '20px'
+                    marginBottom: '10px'
                   }}
               >
                 Please register providing necessary details.
