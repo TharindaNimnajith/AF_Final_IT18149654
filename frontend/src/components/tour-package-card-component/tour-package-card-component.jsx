@@ -9,6 +9,7 @@ class TourPackageCardComponent extends Component {
   render() {
     const {
       tour,
+      onSubmitHandle,
       onChangeCount,
       count
     } = this.props
@@ -44,23 +45,33 @@ class TourPackageCardComponent extends Component {
             <Form.Row>
               <Form.Group as={Col}
                           controlId='formNoOfPersons'>
-                <Form.Label>Number of Persons</Form.Label>
-                <Form.Control placeholder='Number of Persons'
-                              type='text'
+                <Form.Label
+                  style={{
+                    marginLeft: '50px',
+                    width: '100px'
+                  }}
+                >No of Persons</Form.Label>
+                <Form.Control placeholder='No of Persons'
+                              type='number'
                               onChange={onChangeCount}
                               value={count}
                               pattern='[0-9]{1,4}'
+                              min='1'
                               title='Please enter number of persons.'
-                              required/>
+                              required
+                              style={{
+                                marginLeft: '50px',
+                                width: '100px'
+                              }}/>
               </Form.Group>
-            </Form.Row>
-            <Form.Row>
               <Form.Group>
                 <Button variant='danger'
                         type='submit'
                         style={{
-                          marginLeft: '120px'
+                          marginTop: '20px'
                         }}
+                        onClick={onSubmitHandle}
+                        disabled
                 >
                   Book Now!
                 </Button>

@@ -6,7 +6,10 @@ import './tour-package-card-deck-component-styles.scss'
 class TourPackageCardDeckComponent extends Component {
   render() {
     const {
-      tours
+      tours,
+      onSubmitHandle,
+      onChangeCount,
+      count
     } = this.props
 
     return (
@@ -27,7 +30,10 @@ class TourPackageCardDeckComponent extends Component {
           <CardDeck>
             {
               tours.map(tour => {
-                return <TourPackageCardComponent tour={tour}/>
+                return <TourPackageCardComponent tour={tour}
+                                                 onSubmitHandle={() => onSubmitHandle(tour._id)}
+                                                 onChangeCount={onChangeCount}
+                                                 count={count}/>
               })
             }
           </CardDeck>
